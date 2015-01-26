@@ -3,7 +3,7 @@ timeSyncApp.controller('timeInputs', ['$scope','$rootScope','$location', '$fireb
 	$scope.submit = function() {
         if ($scope.newTime.hours || $scope.newTime.minutes || $scope.newTime.seconds) {
 			
-			//this is the information for firabase connection
+			//This is the information for firabase connection.
 			var url = 'https://sms-demo-julian.firebaseio.com/timedata';
 			var ref = new Firebase(url);
 			$scope.timedata = $firebase(ref).$asArray();
@@ -33,11 +33,8 @@ timeSyncApp.controller('timeInputs', ['$scope','$rootScope','$location', '$fireb
 			    return this;
 			}
 
+		//This will give the time that we will be counting down to.
 		var timeNow = new Date().addHours($scope.newTime.hours).addMinutes($scope.newTime.minutes).addSeconds($scope.newTime.seconds).getTime();
-		console.log($scope.newTime.hours);
-		console.log($scope.newTime.minutes);
-		console.log($scope.newTime.seconds);
-		console.log(timeNow);
 		
 		//This section will handle sending information to the database will returning the object id at the same time, as well as routing.
 		$scope.timedata.$add({timeNum : timeNow}).then(function(ref){

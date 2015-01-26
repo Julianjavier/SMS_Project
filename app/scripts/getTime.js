@@ -1,12 +1,14 @@
 //This controlloer will retrive the information form fira base.
-timeSyncApp.controller('getTime', ['$scope','$rootScope','$routeParams', '$firebase' ,function($scope, $rootScope, $routeParams, $firebase){
+timeSyncApp.controller('getTime', ['$scope','$rootScope','$routeParams', '$firebase', '$location' ,function($scope, $rootScope, $routeParams, $firebase, $location){
 	var url = 'https://sms-demo-julian.firebaseio.com/timedata/'+$routeParams.id;
-	var ref = new Firebase(url);
-	$scope.timedata = $firebase(ref).$asObject();
+  var ref = new Firebase(url);
+	data = $firebase(ref);
+  $scope.timedata = data.$asObject();
 
+  if ($scope.timedata != undefined ){
      // to take an action after the data loads, use the $loaded() promise
     $scope.timedata.$loaded().then(function() {
-        console.log("loaded record:", $scope.timedata.$id, $scope.timedata.timeNum);
+        console.log("loaded record:", $scope.timedata);
 
        // To iterate the key/value pairs of the object, use `angular.forEach()`
        angular.forEach($scope.timedata, function(value, key) {
@@ -18,5 +20,19 @@ timeSyncApp.controller('getTime', ['$scope','$rootScope','$routeParams', '$fireb
      $scope.data = $scope.timedata;
 
      // For three-way data bindings, bind it to the scope instead
-     $scope.timedata.$bindTo($scope, "data");
+     // $scope.timedata.$bindTo($scope, "data");
+
+     $scope.delete = function(){
+      data.$remove().then(function(ref) {
+        console.log("loaded record:", $scope.timedata.$id, $scope.timedata.timeNum);
+        $location.path('/')
+        }, function(error) {
+          console.log("Error:", error);
+        });
+     };
+  }else{
+    console.log("NOTHING EXISTS HERE.");
+    $location.path('/')
+  };
+
 }]);
