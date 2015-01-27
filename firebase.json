@@ -1,0 +1,9 @@
+{
+  "firebase": "sms-demo-julian",
+  "public": "app",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

@@ -5,15 +5,19 @@ timeSyncApp.controller('getTime', ['$scope','$rootScope','$routeParams', '$fireb
 	data = $firebase(ref);
   $scope.timedata = data.$asObject();
 
-  if ($scope.timedata.$value != null ){
      // to take an action after the data loads, use the $loaded() promise
     $scope.timedata.$loaded().then(function() {
+      if ($scope.timedata.timeNum){
         console.log("loaded record:", $scope.timedata);
 
        // To iterate the key/value pairs of the object, use `angular.forEach()`
        angular.forEach($scope.timedata, function(value, key) {
           console.log(key, value);
        });
+      }else{
+        console.log("NOTHING EXISTS HERE");
+        $location.path('/')
+      };
      });
 
      // To make the data available in the DOM, assign it to $scope
@@ -30,9 +34,5 @@ timeSyncApp.controller('getTime', ['$scope','$rootScope','$routeParams', '$fireb
           console.log("Error:", error);
         });
      };
-  }else{
-    console.log("NOTHING EXISTS HERE.");
-    $location.path('/')
-  };
 
 }]);
