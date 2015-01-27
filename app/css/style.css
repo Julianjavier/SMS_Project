@@ -1,0 +1,20 @@
+header {
+	background-color:#89BDE2;
+	margin-bottom:40px;
+	height:90px;
+}
+
+header img {
+	max-width:260px;
+	height:auto;
+}
+
+form div .button {
+	width:50%;
+}
+
+footer {
+	background-color:#89BDE2;
+	margin-top:40px;	
+	height:90px;
+}

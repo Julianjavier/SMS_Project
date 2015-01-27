@@ -5,7 +5,7 @@ timeSyncApp.controller('getTime', ['$scope','$rootScope','$routeParams', '$fireb
 	data = $firebase(ref);
   $scope.timedata = data.$asObject();
 
-  if ($scope.timedata != undefined ){
+  if ($scope.timedata.$value != null ){
      // to take an action after the data loads, use the $loaded() promise
     $scope.timedata.$loaded().then(function() {
         console.log("loaded record:", $scope.timedata);

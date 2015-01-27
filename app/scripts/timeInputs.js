@@ -2,7 +2,6 @@
 timeSyncApp.controller('timeInputs', ['$scope','$rootScope','$location', '$firebase' ,function($scope, $rootScope, $location, $firebase){
 	$scope.submit = function() {
         if ($scope.newTime.hours || $scope.newTime.minutes || $scope.newTime.seconds) {
-			
 			//This is the information for firabase connection.
 			var url = 'https://sms-demo-julian.firebaseio.com/timedata';
 			var ref = new Firebase(url);

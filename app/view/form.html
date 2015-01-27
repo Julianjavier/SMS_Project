@@ -1,7 +1,17 @@
 	<form ng-submit="submit()">
 		<!-- these will be the perameters used to determine the countdown timer. split into hours, minutes, seconds. -->
-		<input type="number" ng-model="newTime.hours" name="hours" placeholder="Hours:" required/>
-		<input type="number" ng-model="newTime.minutes" name="minutes" placeholder="Minutes:"/>
-		<input type="number" ng-model="newTime.seconds" name="seconds" placeholder="Seconds:"/>
-		<input type="submit" id="submit" value="Submit" />
+		<div class="row">
+			<div class="small-12 medium-4 columns">
+				<input class="small-4 medium-3 columns" type="number" ng-model="newTime.hours" name="hours" placeholder="Hours:" required/>
+			</div>
+			<div class="small-12 medium-4 columns">
+				<input class="small-4 medium-3 columns" type="number" ng-model="newTime.minutes" name="minutes" placeholder="Minutes:"/>
+			</div>
+			<div class="small-12 medium-4 columns">
+				<input class="" type="number" ng-model="newTime.seconds" name="seconds" placeholder="Seconds:"/>
+			</div>
+			<div class="small-12 medium-12 large-12 columns">
+				<input class="button" type="submit" id="submit" value="Submit" />
+			</div>
+		</div>
 	</form>
